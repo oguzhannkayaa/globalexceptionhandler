@@ -1,0 +1,11 @@
+AddTransient, ASP.NET Core uygulamalarýnda hizmetleri (servisleri) kaydederken kullanýlan bir metoddur. Bu metot, bir hizmetin her istek için yeni bir örnek oluþturulmasýný saðlar.
+
+Örneðin, AddTransient<GlobalExceptionHandlingMiddleware>() çaðrýsý, GlobalExceptionHandlingMiddleware sýnýfýnýn her istek için yeni bir örnek oluþturulacak þekilde kaydedilmesini saðlar. Yani, her istekte farklý bir GlobalExceptionHandlingMiddleware örneði oluþturulur.
+
+Bu genellikle middleware, servis veya benzeri hizmetlerin, her istekte özgün ve baðýmsýz bir durumda olmasýný saðlamak için kullanýlýr. Özellikle hizmetin durumu her istekte deðiþiyorsa veya bir istekten diðerine taþýnmasý veya paylaþýlmasý istenmiyorsa bu yaklaþým tercih edilir.
+
+AddTransient yerine AddScoped veya AddSingleton kullanarak da hizmetleri kaydedebilirsiniz. Bu metotlar, hizmetin yaþam döngüsünü kontrol eder:
+
+AddScoped: Her istek için ayný örneði kullanýr (her talep için bir örnek oluþturur).
+AddSingleton: Uygulama ömrü boyunca sadece bir örnek oluþturur ve bunu her istekte kullanýr.
+Yani, AddTransient özellikle hizmetin her istekte yeni bir örnek olarak oluþturulmasýný saðlar.
